@@ -11,14 +11,14 @@ pipeline {
         stage('Prepare IIS folder') {
             steps {
                 echo 'Creating IIS target folder (if not exists)...'
-                bat 'if not exist "C:\\inetpub\\wwwroot\\mymangaweb" mkdir "C:\\inetpub\\wwwroot\\mymangaweb"'
+                bat 'if not exist "C:\\wwwroot\\mymangaweb" mkdir "C:\\wwwroot\\mymangaweb"'
             }
         }
 
         stage('Deploy to IIS folder') {
             steps {
                 echo 'Deploying static site (HTML/CSS/JS)...'
-                bat 'xcopy "%WORKSPACE%\\*" "C:\\inetpub\\wwwroot\\mymangaweb\\" /E /Y /I /R'
+                bat 'xcopy "%WORKSPACE%\\*" "C:\\wwwroot\\mymangaweb\\" /E /Y /I /R'
             }
         }
 

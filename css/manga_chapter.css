@@ -1,0 +1,224 @@
+.loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #333;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #28144d;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Chapter Navigation */
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between; 
+    gap: 10px; 
+    width: 100%;
+    max-width: 500px; 
+    margin: 10px auto;
+}
+
+button {
+    background: #3a2791; /* Black background */
+    color: #fff; /* White text */
+    border: 2px solid #4a3d79; 
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.chapter-navigation button:hover {
+    background: #35333b; /* Slightly lighter black */
+}
+
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px; /* Ensure it does not go too wide */
+    margin: 10px auto;
+}
+
+/* Chapter Title */
+#chapter-title {
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+
+/* Chapter Content */
+.content-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Chapter Images */
+.chapter-image {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Chapter Button */
+#current-chapter {
+    width: 100%;
+    border-radius: 25px;
+    background-color: #4a3d79;
+    display: block;
+    margin: 20px auto 10px; /* Increase top margin to move it down */
+    text-align: center;
+}
+
+/* Chapter List */
+#chapter-list {
+    position: absolute;
+    width: 46%; /* Matches the button width */
+    max-height: 250px; /* Allows scrolling if too many chapters */
+    background: #4a3d79;
+    border-radius: 25px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    list-style: none;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+    overflow-y: auto; /* Enables scrolling */
+    overflow-x: hidden; /* Prevents horizontal overflow */
+    box-sizing: border-box; /* Ensures padding is included within the width/height */
+    clip-path: inset(0 round 25px); /* Ensures the scrollbar stays within the rounded border */
+}
+
+/* Chapter List Items */
+#chapter-list li {
+    background-color: #4a3d79;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 20px; /* Round corners */
+    transition: background 0.2s ease-in-out, color 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    margin: 5px 0; /* Add space between items */
+}
+
+/* Rounded & Highlighted on Hover */
+#chapter-list li:hover {
+    background: #1b0452;
+    border-radius: 15px; /* More rounded on hover */
+}
+
+/* Active Chapter */
+#chapter-list li.active {
+    font-weight: bold;
+    background: #007bff;
+    color: white;
+    border-radius: 10px;
+}
+
+/* Link Styling */
+#chapter-list li a {
+    color: #ffffff !important;
+    text-decoration: none;
+    display: block;
+    padding: 12px;
+}
+
+/* Keep Text Color on Hover */
+#chapter-list li a:hover {
+    color: #ffffff !important; /* White text on hover */
+}
+
+/* Active Chapter Link */
+#chapter-list li.active a {
+    font-weight: bold;
+    color: white !important;
+}
+
+/* Custom Scrollbar - WebKit Browsers */
+#chapter-list::-webkit-scrollbar {
+    width: 15px; /* Adjust scrollbar width */
+}
+
+#chapter-list::-webkit-scrollbar-track {
+    background: #4a3d79; /* Track background color */
+    border-radius: 25px; 
+}
+
+#chapter-list::-webkit-scrollbar-thumb {
+    background: #392f5e; /* Different color for the scrollbar thumb */
+    border-radius: 25px; 
+    border: 2px solid #4a3d79; 
+}
+
+/* TOP Navigation Buttons */
+.top-navigation-container {
+    position: absolute;
+    top: -10px; /* Move it higher */
+    left: 0;
+    width: 100%;
+    padding: 15px 10px; /* Increase padding to prevent overlap */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Reduce space between buttons */
+}
+
+/* Top & Bottom Buttons */
+.top-navigation-container button,
+.bottom-navigation-container button {
+    background-color: #4a3d79;
+    color: #ffffff;
+    padding: 12px 0; 
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;  
+    width: 90%; 
+    max-width: 400px; 
+    text-align: center;
+    white-space: nowrap; 
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover Effect */
+.top-navigation-container button:hover,
+.bottom-navigation-container button:hover {
+    background-color: #1b0452;
+    border-color: #4a3d79;
+}
+
+/* CONTAINER Adjustments */
+.top-navigation-container,
+.bottom-navigation-container {
+    display: flex;
+    justify-content: center; /* Keep them centered */
+    align-items: center;
+    gap: 25px; /* Space between buttons */
+    padding: 10px;
+}

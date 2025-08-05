@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    connect-src 'self' https://localhost:7155;
+    img-src 'self' data:;
+    style-src 'self' 'unsafe-inline';
+    script-src 'self' 'unsafe-inline';
+">
+    <title>Profile | Manga Haven</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/plyr.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/categories.css" type="text/css">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background-color: #0b0c2a;
+            color: #fff;
+            font-family: 'Mulish', sans-serif;
+        }
+
+        .profile-section {
+            padding: 60px 0;
+        }
+
+        .profile-menu {
+            background: #1a1b3a;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .profile-menu .nav-link {
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            padding: 10px 15px;
+            transition: color 0.3s;
+        }
+
+        .profile-menu .nav-link:hover,
+        .profile-menu .nav-link.active {
+            color: #e53637;
+        }
+
+        .profile-content {
+            background: #1a1b3a;
+            border-radius: 5px;
+            padding: 30px;
+        }
+
+        .main__button {
+            background: #e53637;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+
+        .main__button:hover {
+            background: #b72829;
+        }
+
+        .form-control {
+            background: #2a2b4a;
+            border: 1px solid #3a3b5a;
+            color: #fff;
+            border-radius: 3px;
+        }
+
+        .form-group i {
+            color: #e53637;
+            margin-right: 10px;
+        }
+
+        .bookmark-item {
+            display: flex;
+            align-items: center;
+            background: #2a2b4a;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+        }
+
+        .bookmark-item img {
+            object-fit: cover;
+        }
+
+        .bookmark-item span {
+            flex-grow: 1;
+            font-family: 'Mulish', sans-serif;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html">
+                            <img src="img/logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <li><a href="./index.html">Homepage</a></li>
+                                <li><a href="./categories.html">Categories</a></li>
+                                <li class="active"><a href="#">Your Profile <span class="arrow_carrot-down"></span></a>
+                                    <ul class="dropdown">
+                                        <li><a href="./profile.html">Your Profile</a></li>
+                                        <li><a href="#" id="logoutLink" onclick="logout()">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="header__right">
+                        <a href="./Search.html" class="search-switch"><span class="icon_search"></span></a>
+                        <div class="user-info" id="userInfo"></div>
+                        <a href="./login.html" id="loginLink"><span class="icon_profile"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="profile-menu section box">
+                        <div class="flex-column nav nav-pills" role="tablist">
+                            <div class="nav-item"><a href="#" role="tab" class="nav-link active"
+                                    data-tab="profile">Profile</a></div>
+                            <div class="nav-item"><a href="#" role="tab" class="nav-link"
+                                    data-tab="bookmark">Bookmark</a></div>
+                            <div class="nav-item"><a href="#" role="tab" class="nav-link" data-tab="history">Reading
+                                    History</a></div>
+                            <div class="nav-item"><a href="#" role="tab" class="nav-link"
+                                    data-tab="comments">Comments</a></div>
+                        </div>
+                        <br>
+                        <a class="main__button logout" href="#" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="profile-content section box">
+                        <div class="tab-content">
+                            <!-- Profile Tab -->
+                            <div role="tabpanel" id="profile" class="tab-pane active">
+                                <div class="settings">
+                                    <div style="padding: 30px 0 10px;">
+                                        <label style="font-size: 18px; margin-bottom: 20px;">USER INFORMATION</label>
+                                        <form class="update-form" id="update-profile">
+                                            <div class="form-group"><i class="fa fa-user-alt"></i>
+                                                <input type="text" name="username" class="form-control"
+                                                    placeholder="Display name">
+                                            </div>
+                                            <div class="form-group"><i class="fa fa-envelope"></i>
+                                                <input type="text" name="email" class="form-control" placeholder="Email"
+                                                    disabled>
+                                            </div>
+                                            <button class="main__button" type="submit"
+                                                style="width: 200px;">SAVE</button>
+                                        </form>
+                                    </div>
+                                    <div style="padding: 40px 0;">
+                                        <label style="font-size: 18px; margin-bottom: 20px;">CHANGE PASSWORD</label>
+                                        <form id="change-password-form" class="update-form">
+                                            <div class="form-group"><i class="fa fa-lock"></i>
+                                                <input type="password" name="new_password" class="form-control" required
+                                                    placeholder="New password">
+                                            </div>
+                                            <div class="form-group"><i class="fa fa-lock"></i>
+                                                <input type="password" name="confirm_password" class="form-control"
+                                                    required placeholder="Confirm password">
+                                            </div>
+                                            <button class="main__button" type="submit" style="width: 200px;">UPDATE
+                                                PASSWORD</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Bookmark Tab -->
+                            <div role="tabpanel" id="bookmark" class="tab-pane">
+                                <h3>Bookmarked Manga</h3>
+                                <div id="bookmark-list"></div>
+                            </div>
+                            <!-- History Tab -->
+                            <div role="tabpanel" id="history" class="tab-pane">
+                                <h3>Reading History</h3>
+                                <div id="history-list"></div>
+                            </div>
+                            <!-- Comments Tab -->
+                            <div role="tabpanel" id="comments" class="tab-pane">
+                                <h3>Your Comments</h3>
+                                <div id="comments-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="page-up">
+            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="footer__nav">
+                        <ul>
+                            <li class="active"><a href="./index.html">Homepage</a></li>
+                            <li><a href="./categories.html">Categories</a></li>
+                            <li><a href="./profile.html">Your Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <p>
+                        Copyright ©
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
+                    </p>
+                    <p>All manga are borrowed from MangaDexAPI</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Model -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="icon_close"></i></div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/getMangaHome.js"></script>
+    <script src="js/userState.js"></script>
+    <script src="js/follow.js"></script>
+    <script src="js/profile.js"></script>
+
+
+</body>
+
+</html>

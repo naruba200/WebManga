@@ -8,6 +8,13 @@ pipeline {
             }
         }
 
+        stage('Prepare IIS folder') {
+            steps {
+                echo 'Creating IIS target folder (if not exists)...'
+                bat 'if not exist "C:\\inetpub\\wwwroot\\mymangaweb" mkdir "C:\\inetpub\\wwwroot\\mymangaweb"'
+            }
+        }
+
         stage('Deploy to IIS folder') {
             steps {
                 echo 'Deploying static site (HTML/CSS/JS)...'

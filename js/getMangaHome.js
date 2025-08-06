@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const response = await fetch('http://mangahomebrew.runasp.net/api/Manga');
+            const response = await fetch('http://localhost:5000/api/Manga');
             if (!response.ok) throw new Error('Network response was not ok');
             const data = await response.json();
 

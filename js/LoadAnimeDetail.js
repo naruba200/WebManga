@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let firstChapterID = null; // Store first chapter
 
     // Fetch manga details
-    fetch(`http://mangahomebrew.runasp.net/api/Manga/${mangaID}`)
+    fetch(`http://localhost:5000/api/Manga/${mangaID}`)
         .then(response => {
             if (!response.ok) throw new Error("Failed to fetch manga details.");
             return response.json();
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     // Fetch chapters for the manga
-    fetch(`http://mangahomebrew.runasp.net/api/Chapter/manga/${mangaID}`)
+    fetch(`http://localhost:5000/api/Chapter/manga/${mangaID}`)
         .then(response => {
             if (!response.ok) throw new Error("Failed to fetch chapters.");
             return response.json();

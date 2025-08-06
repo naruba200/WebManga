@@ -1,5 +1,5 @@
 // js/anime-details.js
-const API_BASE_URL = 'https://webmangaapi.onrender.com/api/';
+const API_BASE_URL = 'https://localhost:5000/api/';
 
 // Helper to get auth token
 function getAuthHeader() {

@@ -1,22 +1,14 @@
-# Use the official .NET SDK image for build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+# Use official Nginx image
+FROM nginx:alpine
 
-# Copy csproj and restore as distinct layers
-COPY *.csproj ./
-RUN dotnet restore
+# Remove default nginx index.html
+RUN rm -rf /usr/share/nginx/html/*
 
-# Copy everything else and build
-COPY . ./
-RUN dotnet publish -c Release -o out
+# Copy your static files into nginx's public directory
+COPY . /usr/share/nginx/html
 
-# Runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
-WORKDIR /app
-COPY --from=build /app/out .
+# Expose port 80
+EXPOSE 80
 
-# Bind to port
-ENV ASPNETCORE_URLS=http://+:8080
-EXPOSE 8080
-
-ENTRYPOINT ["dotnet", "MangaAPI.dll"]
+# Use the default Nginx command
+CMD ["nginx", "-g", "daemon off;"]

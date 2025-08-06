@@ -3,7 +3,7 @@
 // Function to check if a manga is followed by the user
 async function checkFollowStatus(readerId, mangaId) {
     try {
-        const response = await fetch(`http://mangahomebrew.runasp.net/api/Follow?readerId=${readerId}&mangaId=${mangaId}`, {
+        const response = await fetch(`http://localhost:5000/api/Follow?readerId=${readerId}&mangaId=${mangaId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ async function checkFollowStatus(readerId, mangaId) {
 // Function to follow a manga
 async function followManga(readerId, mangaId) {
     try {
-        const response = await fetch('http://mangahomebrew.runasp.net/api/Follow', {
+        const response = await fetch('http://localhost:5000/api/Follow', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ async function followManga(readerId, mangaId) {
 // Function to unfollow a manga
 async function unfollowManga(readerId, mangaId) {
     try {
-        const response = await fetch(`http://mangahomebrew.runasp.net/api/Follow/${readerId}/${mangaId}`, {
+        const response = await fetch(`http://localhost:5000/api/Follow/${readerId}/${mangaId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

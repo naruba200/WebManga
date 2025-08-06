@@ -1,5 +1,5 @@
 // Set your API base URL as needed.
-const API_BASE_URL = "http://mangahomebrew.runasp.net/api/";
+const API_BASE_URL = "http://localhost:5000/api/";
 
 // Utility function to get authentication headers, if applicable.
 function getAuthHeader() {

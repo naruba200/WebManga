@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         contentDiv.innerHTML = "<p>Loading...</p>";
 
         // Fetch chapter details
-        const chapterResponse = await fetch(`http://mangahomebrew.runasp.net/api/Chapter/${chapterID}`);
+        const chapterResponse = await fetch(`http://localhost:5000/api/Chapter/${chapterID}`);
         if (!chapterResponse.ok) throw new Error("Failed to load chapter.");
         const chapter = await chapterResponse.json();
 
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const mangaID = chapter.mangaID;
         if (!mangaID) throw new Error("Manga ID not found in chapter data.");
 
-        const chaptersResponse = await fetch(`http://mangahomebrew.runasp.net/api/Chapter/manga/${mangaID}`);
+        const chaptersResponse = await fetch(`http://localhost:5000/api/Chapter/manga/${mangaID}`);
         if (!chaptersResponse.ok) throw new Error("Failed to fetch chapters.");
         const chapters = await chaptersResponse.json();
 

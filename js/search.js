@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://mangahomebrew.runasp.net/api/';
+const API_BASE_URL = 'http://localhost:5000/api/';
 
 // Lấy các phần tử DOM
 const searchInput = document.getElementById('search-input');

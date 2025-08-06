@@ -11,7 +11,7 @@ let isDropdownOpen = false;
 
 async function fetchMangaData(page = 1) {
     try {
-        const response = await fetch(`http://mangahomebrew.runasp.net/api/Manga?page=${page}&limit=${itemsPerPage}`);
+        const response = await fetch(`http://localhost:5000/api/Manga?page=${page}&limit=${itemsPerPage}`);
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
         allManga = data.manga || data;
@@ -25,7 +25,7 @@ async function fetchMangaData(page = 1) {
 
 async function fetchAllManga() {
     try {
-        const response = await fetch('http://mangahomebrew.runasp.net/api/Manga');
+        const response = await fetch('http://localhost:5000/api/Manga');
         if (!response.ok) throw new Error('Network response was not ok');
         allManga = await response.json();
         filteredManga = allManga;

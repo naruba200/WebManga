@@ -3,7 +3,7 @@
 // Function to fetch and display bookmarked manga
 async function loadBookmarks(readerId) {
     try {
-        const response = await fetch(`http://mangahomebrew.runasp.net/api/Follow?readerId=${readerId}`, {
+        const response = await fetch(`http://localhost:5000/api/Follow?readerId=${readerId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ function displayBookmarks(bookmarks) {
 // Reuse unfollowManga from follow.js (define it here if not imported)
 async function unfollowManga(readerId, mangaId) {
     try {
-        const response = await fetch(`http://mangahomebrew.runasp.net/api/Follow/${readerId}/${mangaId}`, {
+        const response = await fetch(`http://localhost:5000/api/Follow/${readerId}/${mangaId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

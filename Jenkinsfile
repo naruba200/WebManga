@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone source code') {
             steps {
-                git branch: 'main', url: 'https://github.com/naruba200/WebManga.git'
+                git branch: 'naruba200', url: 'https://github.com/naruba200/WebManga.git'
             }
         }
 

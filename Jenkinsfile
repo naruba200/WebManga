@@ -34,33 +34,33 @@ pipeline {
                 bat 'iisreset'
             }
         }
-        stage('Build Docker Image') {
-                steps {
-                    bat "docker build -t %DOCKER_IMAGE_NAME%:%DOCKER_TAG% ."
-                }
-            }
+        // stage('Build Docker Image') {
+        //         steps {
+        //             bat "docker build -t %DOCKER_IMAGE_NAME%:%DOCKER_TAG% ."
+        //         }
+        //     }
 
 
-         stage('Login to Docker Hub') {
-            steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS) {
-                        echo 'Logged in to Docker Hub'
-                    }
-                }
-            }
-        }
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS) {
-                        docker.image("${DOCKER_IMAGE_NAME}:${DOCKER_TAG}").push()
-                        // Optionally push :latest too
-                        docker.image("${DOCKER_IMAGE_NAME}:${DOCKER_TAG}").push("latest")
-                    }
-                }
-            }
-        }
+        //  stage('Login to Docker Hub') {
+        //     steps {
+        //         script {
+        //             docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS) {
+        //                 echo 'Logged in to Docker Hub'
+        //             }
+        //         }
+        //     }
+        // }
+        // stage('Push Docker Image') {
+        //     steps {
+        //         script {
+        //             docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS) {
+        //                 docker.image("${DOCKER_IMAGE_NAME}:${DOCKER_TAG}").push()
+        //                 // Optionally push :latest too
+        //                 docker.image("${DOCKER_IMAGE_NAME}:${DOCKER_TAG}").push("latest")
+        //             }
+        //         }
+        //     }
+        // }
 
     }
 }

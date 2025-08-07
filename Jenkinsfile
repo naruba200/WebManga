@@ -35,12 +35,11 @@ pipeline {
             }
         }
         stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build("${DOCKER_IMAGE_NAME}:${DOCKER_TAG}")
+                steps {
+                    bat "docker build -t %DOCKER_IMAGE_NAME%:%DOCKER_TAG% ."
                 }
             }
-        }
+
 
          stage('Login to Docker Hub') {
             steps {

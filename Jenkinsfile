@@ -34,11 +34,6 @@ pipeline {
                 bat 'iisreset'
             }
         }
-         stage('Checkout') {
-            steps {
-                git 'https://github.com/naruba200/WebManga.git'
-            }
-        }
         stage('Build Docker Image') {
             steps {
                 script {

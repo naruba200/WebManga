@@ -39,6 +39,14 @@ pipeline {
                 git 'https://github.com/naruba200/WebManga.git'
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build("${DOCKER_IMAGE_NAME}:${DOCKER_TAG}")
+                }
+            }
+        }
+
          stage('Login to Docker Hub') {
             steps {
                 script {

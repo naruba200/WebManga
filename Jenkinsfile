@@ -1,6 +1,12 @@
 pipeline {
     agent any
-
+    environment {
+        LANG = 'en_US.UTF-8'
+        LC_ALL = 'en_US.UTF-8'
+        DOCKERHUB_CREDENTIALS = 'naruba200' 
+        DOCKER_IMAGE_NAME = 'naruba200/mangaweb'  
+        DOCKER_TAG = 'latest'                  
+    }
     stages {
         stage('Clone source code') {
             steps {
@@ -28,5 +34,31 @@ pipeline {
                 bat 'iisreset'
             }
         }
+         stage('Checkout') {
+            steps {
+                git 'https://github.com/naruba200/WebManga.git'
+            }
+        }
+         stage('Login to Docker Hub') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS) {
+                        echo 'Logged in to Docker Hub'
+                    }
+                }
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS) {
+                        docker.image("${DOCKER_IMAGE_NAME}:${DOCKER_TAG}").push()
+                        // Optionally push :latest too
+                        docker.image("${DOCKER_IMAGE_NAME}:${DOCKER_TAG}").push("latest")
+                    }
+                }
+            }
+        }
+
     }
 }
